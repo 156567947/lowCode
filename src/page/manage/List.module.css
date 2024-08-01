@@ -3,11 +3,11 @@
 }
 
 .header .left {
-  flex: 1;
+  width: 35vw;
 }
 
 .header .right {
-  flex: 1;
+  width: 35vw;
   text-align: right;
 }
 

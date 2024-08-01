@@ -1,1 +1,1 @@
-.header{display:flex}.header .left{flex:1}.header .right{flex:1;text-align:right}.footer{margin-top:50px;display:flex;justify-content:center}
+.header{display:flex}.header .left{width:35vw}.header .right{width:35vw;text-align:right}.footer{margin-top:50px;display:flex;justify-content:center}
