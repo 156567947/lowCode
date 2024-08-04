@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import QuestionCard from "@/components/QuestionCard.tsx";
+import ListSearch from "@/components/ListSearch";
 import styles from "./List.module.scss";
 import { Space, Typography } from "antd";
+// import axios from "axios";
+// import "../../_mock/index";
 const { Title } = Typography;
 const rowData = [
   {
@@ -31,13 +34,23 @@ const rowData = [
 ];
 export default function List() {
   const [list, setList] = useState(rowData);
+  useEffect(() => {
+    // fetch("/api/test").then((res) => {
+    //   return res.json();
+    // }).then((data) => {
+    //   console.log(data)
+    // })
+  }, []);
+
   return (
     <>
       <div className={styles.header}>
         <div className={styles.left}>
           <Title level={3}>我的问卷</Title>
         </div>
-        <div className={styles.right}>搜索 </div>
+        <div className={styles.right}>
+          <ListSearch />
+        </div>
       </div>
       <div style={{ width: "100%" }}>
         <Space direction="vertical">

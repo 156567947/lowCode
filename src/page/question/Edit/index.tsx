@@ -1,8 +1,13 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useLoadQuestionData } from "../../../hooks/useLoadQuestionData";
 export default function Edit() {
-    const {id} = useParams()
-    return (
-        <div>Edit{id}</div>
-    )
+  const { loading, questionData,error } = useLoadQuestionData();
+  return (
+    <div>
+      <p>Edit page</p>
+      <div>
+        {loading && <p>Loading...</p>}
+        {!loading && <div>shuju </div>}
+      </div>
+    </div>
+  );
 }

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Typography, Empty, Table, Tag, Space, Button, Modal } from "antd";
 import styles from "./List.module.scss";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
+import ListSearch from "@/components/ListSearch";
+
 const { Title } = Typography;
 const { confirm } = Modal;
 const rowData = [
@@ -119,7 +121,9 @@ export default function Trash() {
         <div className={styles.left}>
           <Title level={3}>我的问卷</Title>
         </div>
-        <div className={styles.right}>搜索 </div>
+        <div className={styles.right}>
+          <ListSearch />
+        </div>
       </div>
       <div className="content">
         {trashData.length === 0 && <Empty description="暂无数据" />}

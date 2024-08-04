@@ -21,13 +21,13 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
-  },
-  "baseUrl": "./",
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": "./",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    },
-  "include": ["src"]
+      "@/*": ["src/*"]
+    }
+  },
+
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.js", "src/**/*.jsx"],
+  "exclude": ["node_modules"]
 }
