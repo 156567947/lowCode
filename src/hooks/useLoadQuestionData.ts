@@ -21,9 +21,9 @@ export const useLoadQuestionData = () => {
         return data;
 
     }
-    const { data: questionData, loading, error } = useRequest(fetchData)
+    const { data, loading, error } = useRequest(fetchData)
     return {
-        questionData,
+        data,
         loading,
         error
     }

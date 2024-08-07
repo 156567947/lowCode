@@ -3,35 +3,11 @@ import { Typography, Empty, Table, Tag, Space, Button, Modal } from "antd";
 import styles from "./List.module.scss";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import ListSearch from "@/components/ListSearch";
+import useLoadQuestionListData from "@/hooks/useLoadQuestionListData";
 
 const { Title } = Typography;
 const { confirm } = Modal;
-const rowData = [
-  {
-    _id: "q1",
-    title: "问卷1",
-    isPublished: false,
-    isStar: false,
-    answerCount: 5,
-    createdAt: "12:52:25",
-  },
-  {
-    _id: "q2",
-    title: "问卷2",
-    isPublished: false,
-    isStar: true,
-    answerCount: 5,
-    createdAt: "12:52:25",
-  },
-  {
-    _id: "q3",
-    title: "问卷3",
-    isPublished: true,
-    isStar: false,
-    answerCount: 5,
-    createdAt: "12:52:25",
-  },
-];
+
 const tableColumns = [
   {
     title: "问卷标题",
@@ -76,8 +52,9 @@ const tableColumns = [
 ];
 
 export default function Trash() {
-  const [trashData, setTrashData] = useState(rowData);
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const { data = {}, loading } = useLoadQuestionListData({ isDeleted: true });
+  const { list = [] } = data;
   const del = () => {
     confirm({
       title: "确认删除选中问卷吗？",
@@ -101,7 +78,8 @@ export default function Trash() {
         </Space>
       </div>
       <Table
-        dataSource={trashData}
+        loading={loading}
+        dataSource={list}
         columns={tableColumns}
         pagination={false}
         rowKey={(record) => record._id}
@@ -126,8 +104,8 @@ export default function Trash() {
         </div>
       </div>
       <div className="content">
-        {trashData.length === 0 && <Empty description="暂无数据" />}
-        {trashData.length > 0 && element}
+        {!loading && list.length === 0 && <Empty description="暂无数据" />}
+        {element}
       </div>
     </>
   );
