@@ -14,7 +14,9 @@ function useLoadQuestionListData(opt: Partial<OptionType> = {}) {
     const { data, error, loading } = useRequest(async () => {
 
         const keyword = searchParams.get('keyword') || ''
-        const data = await getQuestionListService({ keyword, isStar, isDeleted })
+        const pageNum = Number(searchParams.get('pageNum')) || 1 
+        const pageSize = Number(searchParams.get('pageSize')) || 10
+        const data = await getQuestionListService({ keyword, isStar, isDeleted, pageNum, pageSize })
         return data
     }, {
         refreshDeps: [searchParams]

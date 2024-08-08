@@ -4,6 +4,8 @@ type SearchOption = {
     keyword: string
     isStar: boolean
     isDeleted: boolean
+    pageSize: number
+    pageNum: number
 }
 
 export async function getQuestionService(id: string): Promise<ResDataType> {
