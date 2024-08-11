@@ -4,6 +4,7 @@ import styles from "./List.module.scss";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import ListSearch from "@/components/ListSearch";
 import useLoadQuestionListData from "@/hooks/useLoadQuestionListData";
+import ListPage from "@/components/ListPage";
 
 const { Title } = Typography;
 const { confirm } = Modal;
@@ -54,7 +55,7 @@ const tableColumns = [
 export default function Trash() {
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const { data = {}, loading } = useLoadQuestionListData({ isDeleted: true });
-  const { list = [] } = data;
+  const { list = [], total = 0 } = data;
   const del = () => {
     confirm({
       title: "确认删除选中问卷吗？",
@@ -106,6 +107,9 @@ export default function Trash() {
       <div className="content">
         {!loading && list.length === 0 && <Empty description="暂无数据" />}
         {element}
+      </div>
+      <div>
+        <ListPage total={total} />
       </div>
     </>
   );

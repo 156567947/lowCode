@@ -2,7 +2,7 @@ import styles from "./List.module.scss";
 import QuestionCard from "@/components/QuestionCard.tsx";
 import ListSearch from "@/components/ListSearch";
 import useLoadQuestionListData from "@/hooks/useLoadQuestionListData";
-
+import ListPage from "@/components/ListPage";
 import { Space, Typography, Empty, Spin } from "antd";
 const { Title } = Typography;
 
@@ -41,7 +41,9 @@ export default function Star() {
             list.map((item: any) => <QuestionCard key={item.id} {...item} />)}
         </Space>
       </div>
-      <div className={styles.footer}> 分页</div>
+      <div className={styles.footer}>
+        <ListPage total={total} />
+      </div>
     </>
   );
 }
